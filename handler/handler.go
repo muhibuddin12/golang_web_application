@@ -16,5 +16,15 @@ func GetServeMux() *http.ServeMux {
 		fmt.Fprint(w, "Hi page")
 	})
 
+	mux.HandleFunc("/images", func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprint(w, "Images")
+	})
+
+	mux.HandleFunc("/images/thumbnails/", func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprintln(w, "Thumbnail")
+		fmt.Fprintln(w, r.Method)
+		fmt.Fprintln(w, r.RequestURI)
+	})
+
 	return mux
 }
